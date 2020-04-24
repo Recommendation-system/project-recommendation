@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #f2f2f2;
+}
+
+.main-page {
+	width: 100%;
+	display: flex; /* расположение блоков (register-image и register-form) по горизонтали */
+}
+
+.main-image {
+	width: 65%; /*  деление пространства между блоками (*) */
+	height: auto;
+	position: relative;
+}
+
+.main-image #main-image {
+	width: 100%; 
+	height: 100%; /* адаптирование главной фотограции */
+}
+
+.main-image #logo{
+	position: absolute;
+	left: 3vw;
+	top: 0.5vw;
+	margin: auto;
+}
+
+.main-image #logo p {
+	display: inline;
+	position: relative;
+	top: -0.9vw; /* смещение элемента относительно логитипа-изображения */
+	font-size: 1.8vw;
+	color: white;
+	font-weight: 700;
+	font-family: Roboto;
+	margin-top: 15vw;
+}
+
+.main-image #logo a {
+	text-decoration: none;
+}
+
+.main-image #logo img {
+	width: 3vw;
+	height: 3vw;
+} 
+
+.loggining-form {
+	width: 35%;  /* деление пространства между блоками(*) */
+	height: auto;
+}
+
+.loggining-form #label-text {
+	font-family: Roboto;
+	font-size: 2.3vw;
+	text-align: center;
+	padding-top: 10%;	
+}
+
+.loggining-form form {
+	width: 80%;	
+	margin: auto; /* выранивание блока по центру*/
+}
+
+.loggining-form form input[type="text"], .loggining-form form input[type="password"] {
+	width: 90%; /* ширина поля ввода*/
+	height: 5.5vw; /* высота поля ввода*/
+	border-radius: 1vw;
+	border: 1px solid black;
+	font-size: 2.5vw; /* размер шрифта внутри поля ввода*/
+	color: #333; /*Цвет текста вводимого в форму*/
+	font-family: Roboto;
+	padding-left: 2.3vw; /* смещение текса внутри поля ввода*/
+	outline: none; /* убирает внешнию обводку */
+}
+.loggining-form form input[type="text"] { /* пространство между полями ввода */
+	margin-bottom: 2.5vw;
+	margin-top: 5px;
+}
+
+.loggining-form form #remember-me {
+	font-size: 1.3vw;	
+	padding: 0px;
+	display: inline;
+}
+
+.loggining-form form p input[type="checkbox"]{
+	margin-top: 2vw;
+	margin-left: 2vw;
+	margin-right: 1vw;
+	width: 1.3vw; /* ширина чекбокса*/
+	height: 1.3vw; /* длина чекбокса*/
+	vertical-align: bottom; /* Выранивание текста поцетру относительно чекбокса*/
+}
+
+.loggining-form form input[type="button"]{
+	float: right; /* оптикание предыдущего элемента слева*/
+	margin-top: 0.6vw;
+	margin-right: 1.3vw;
+	width: 10vw;
+	height: 3.8vw;
+	color: #000;
+	font-size: 1.7vw;
+	font-family: Roboto;
+	background: rgba(73, 91, 186, 0.67);
+	border-radius: 13px;
+	border: none;
+	outline: none; /* убирает внешнию обводку */
+}
+
+.loggining-form form input[type="button"]:hover{
+	background: rgba(50, 50, 200, 0.67); /* изменение цвета при наведении */
+}
+
+#auth_with {
+	text-align: center;
+	padding-top: 1.8vw;
+	font-size: 1.3vw;
+	margin-top: 1.3vw;
+	margin-bottom: 1vw;
+}
+
+.loggining-form form a img{
+	margin-left: 12.6vw;
+	width: 10%;
+	height: auto;
+}
+
+.loggining-form form p{
+	font-size: 1.3vw;
+	text-align: center;
+	font-family: Roboto;
+	margin-top: 1vw;
+}
+
+.loggining-form form a {
+	text-decoration: none;
+	color: #000;
+}
+
+.loggining-form form a:hover {
+	color: #119; /* изменение цвета элемента при наведении*/
+}
+
+.register-form {
+	width: 35%;  /* деление пространства между блоками(*) */
+	height: auto;
+}
+
+.register-form #label-text {
+	font-family: Roboto;
+	font-size: 2.3vw;
+	text-align: center;
+	padding-top: 10%;
+}
+
+.register-form form {
+	width: 80%;
+	margin: auto; /* выранивание блока по центру*/
+}
+.register-form form label{
+	font-size: 1.2vw;
+	font-family: Roboto;
+	padding-left: 0.7vw;
+}
+
+.register-form form input[type="text"] {
+	width: 90%; /* ширина поля ввода*/
+	height: 3.5vw; /* высота поля ввода*/
+	border-radius: 1vw;
+	border: 1px solid black;
+	font-size: 1.5vw; /* размер шрифта внутри поля ввода*/
+	color: #111; /*Цвет текста вводимого в форму*/
+	font-family: Roboto;
+	padding-left: 1.5vw; /* смещение текса внутри поля ввода*/
+	outline: none; /* убирает внешнию обводку */
+}
+.register-form form input[type="text"] { /* пространство между полями ввода */
+	margin-bottom: 1vw;
+	margin-top: 5px;
+}
+
+#date-of-birth, #sex {
+	display: inline-block;
+	width: 13vw;
+}
+
+.register-form form input[type="date"]  {
+	width: 85%; /* ширина поля ввода*/
+	height: 3.5vw; /* высота поля ввода*/
+	border-radius: 1vw;
+	border: 1px solid black;
+	font-size: 1.3vw; /* размер шрифта внутри поля ввода*/
+	color: #111; /*Цвет текста вводимого в форму*/
+	font-family: Roboto;
+	padding-left: 1.5vw; /* смещение текса внутри поля ввода*/
+	outline: none; /* убирает внешнию обводку */
+}
+
+.register-form form select  {
+	width: 105%; /* ширина поля ввода*/
+	height: 3.5vw; /* высота поля ввода*/
+	border-radius: 1vw;
+	border: 1px solid black;
+	font-size: 1.4vw; /* размер шрифта внутри поля ввода*/
+	color: #111; /*Цвет текста вводимого в форму*/
+	font-family: Roboto;
+	padding-left: 2.2vw; /* смещение текса внутри поля ввода*/
+	outline: none; /* убирает внешнию обводку */
+	-webkit-appearance: none; /* удаление стандартного курсора */
+	background: url(../img/arrow.png) no-repeat right; /* добавление нового курсора */
+	background-size: 10%;	/* размер изображения */
+	background-position-x: calc(100% - 95%); /* смещение курсора-треугольника относительно поля*/
+}
+
+#users-email, #users-password {
+	margin-top: 1vw; /* отступ сверху */
+}
+.register-form form input[type="email"], .register-form form input[type="password"] {
+	width: 90%; /* ширина поля ввода*/
+	height: 3.5vw; /* высота поля ввода*/
+	border-radius: 1vw;
+	border: 1px solid black;
+	font-size: 1.5vw; /* размер шрифта внутри поля ввода*/
+	color: #111; /*Цвет текста вводимого в форму*/
+	font-family: Roboto;
+	padding-left: 1.5vw; /* смещение текса внутри поля ввода*/
+	outline: none; /* убирает внешнию обводку */
+}
+
+.register-form form input[type="button"]{
+	margin-top: 1vw;
+	margin-left: 6.3vw;
+	width: 15vw;
+	height: 3.8vw;
+	color: #000;
+	font-size: 1.7vw;
+	font-family: Roboto;
+	background: rgba(73, 91, 186, 0.67);
+	border-radius: 26px;
+	border: none;
+	outline: none; /* убирает внешнию обводку */
+}
+
+.register-form form input[type="button"]:hover{
+	background: rgba(50, 50, 200, 0.67); /* изменение цвета при наведении */
+}
