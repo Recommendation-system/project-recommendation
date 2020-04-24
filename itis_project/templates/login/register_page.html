@@ -1,0 +1,35 @@
+{% extends 'login/main.html' %}
+
+{% block title %}Статьи{% endblock %}
+
+{% block body %}
+		<div class = "register-form">
+			<p id = "label-text">Регистрация нового пользователя</p>
+			<form>
+				<div id = "user-name">
+					<label for = "user_name">Ваше имя:</label><br>
+					<input type="text" name="user_name" placeholder = "Ринат">
+				</div>
+				<div id = "date-of-birth">
+					<label for = "date_of_birth">Дата рождения:</label><br>
+					<input type="date" name="date_of_birth" placeholder="18.06.2001">
+				</div>
+				<div id = "sex">
+					<label for = "sex">Пол:</label><br>
+					<select name = "sex">
+						<option>Мужской</option>
+						<option>Женский</option>
+					</select>
+				</div>
+				<div id = users-email>
+					<label for = "users_email">E-mail:</label>
+					<input type="email" name="users_email" placeholder="yandex@gmail.ru">
+				</div>
+				<div id = users-password>
+					<label for = "password">Пароль:</label>
+					<input type="password" name="password" placeholder="********">
+				</div>
+				<input type="button" name="registration" value = "Регистрация">
+			</form>
+		</div>
+{% endblock %}

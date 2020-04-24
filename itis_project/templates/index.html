@@ -1,0 +1,15 @@
+{% extends 'social_network/main.html' %}
+
+{% block title %}Статьи{% endblock %}
+
+{% block body %}
+    {% for post in posts %}
+        <div id="post">
+            <h2>{{ post.author }}</h2>
+            <p>{{ post.content }}</p>
+            <p>{{ post.published|date:"d.m.Y H:i:s" }}</p>
+            <p>{{ post.likes }}0 Лайков <button >Like</button> </p>
+        </div>
+    {% endfor %}
+{% endblock %}
+
