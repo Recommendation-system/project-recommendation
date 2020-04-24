@@ -9,7 +9,7 @@ class Post(models.Model):
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
 
     def __str__(self):
-        return self.theme.name, self.author
+        return self.theme.name
 
     class Meta:
         verbose_name_plural = 'Записи'
