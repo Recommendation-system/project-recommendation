@@ -5,10 +5,19 @@
 {% block body %}
     {% for post in posts %}
         <div id="post">
-            <h2>{{ post.author }}</h2>
-            <p>{{ post.content }}</p>
-            <p>{{ post.published|date:"d.m.Y H:i:s" }}</p>
-            <p>{{ post.likes }}0 Лайков <button >Like</button> </p>
+        <h2>{{ post.author }}</h2>
+        <p>{{ post.content }}</p>
+        <p>{{ post.published|date:"d.m.Y H:i:s" }}</p>
+            <form action="{% url 'test:like-post' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="post_id" value="{{ post.id }}">
+                {% if user not in post.likes.all %}
+                    <button type="submit">Like</button>
+                {% else %}
+                    <button type="submit">Unlike</button>
+                {% endif %} 
+            </form>
+            <strong>{{ post.likes.all.count }} likes</strong>
         </div>
     {% endfor %}
 {% endblock %}
