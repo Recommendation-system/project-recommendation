@@ -1,0 +1,32 @@
+{% extends 'social_network/main.html' %}
+
+{% block title %}Статьи{% endblock %}
+
+{% block body %}
+    {% for post in posts %}
+        <div class="card">
+            <div class="card-body" id="post">
+                <h2 class="card-title">{{ post.title }}</h2>
+                <p class="card-text">{{ post.content }}</p>
+                <a class="card-link" href="{{ post.get_absolute_url }}">Read more...</a>
+                <p> Published: {{ post.published|date:"d.m.Y H:i:s" }}, <b>by: {{ post.author }}</b></p>
+                <form class="card-link" action="{% url 'like-post' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="post_id" value="{{ post.id }}">
+                    {% if user not in post.likes.all %}
+                        <button class="btn btn-primary float-xl-right" type="submit">Like</button>
+                    {% else %}
+                        <button class="btn btn-danger float-xl-right" type="submit">Unlike</button>
+                    {% endif %}
+                    <strong class="float-xl-right">{{ post.likes.all.count }} likes  -></strong>
+                </form>
+
+
+            </div>
+        </div>
+        <div id="post">
+
+        </div>
+    {% endfor %}
+{% endblock %}
+

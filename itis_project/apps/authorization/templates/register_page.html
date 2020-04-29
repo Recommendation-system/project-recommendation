@@ -1,0 +1,28 @@
+{% extends 'login/main.html' %}
+
+{% block title %}Статьи{% endblock %}
+
+{% block body %}
+		<div class = "register-form">
+			<p id = "label-text">Регистрация нового пользователя</p>
+			<form action="{% url 'register_url' %}" method="post">
+                {% csrf_token %}
+                {% if register_error %}
+                <label class="error">{{ register_error }}</label>
+                {% endif %}
+                <div id="user_name">
+					<label for = "user_name">Ваше имя:</label><br>
+					<input type="text" name="username" placeholder = "Ринат">
+				</div>
+				<div id = users-password>
+					<label for = "password">Пароль:</label>
+					<input type="password" name="password1" placeholder="********">
+				</div>
+                <div id = users-password>
+					<label for = "password">Пароль:</label>
+					<input type="password" name="password2" placeholder="********">
+				</div>
+				<input type="submit" name="registration" value = "Регистрация">
+			</form>
+		</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>{% block title %}{% endblock %} </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel = "stylesheet" href="{% static 'css/login_style.css' %}">
+</head>
+<body>
+	<div class = "main-page">
+		<div class = "main-image">
+			<div id = "logo">
+				<a href = ""><img src = "{% static 'img/logo.png' %}"><p>Y Blog</p></a>
+			</div>
+			<img src = "{% static 'img/bg.png' %}" id = "main-image">
+		</div>
+
+        {% block body %} {% endblock %}
+
+		</div>
+	</div>
+</body>
+</html>
