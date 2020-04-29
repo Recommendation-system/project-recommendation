@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'social_network.apps.SocialNetworkConfig',
+    'itis_project.apps.social_network',
+    'itis_project.apps.authorization',
+
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,10 @@ ROOT_URLCONF = 'itis_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(PROJECT_ROOT, 'templates')]
+        'DIRS': [
+            os.path.join(PROJECT_ROOT, 'apps/social_network/templates'),
+            os.path.join(PROJECT_ROOT, 'apps/authorization/templates')
+        ]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -120,7 +125,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, "templates/static"),
+    os.path.join(PROJECT_ROOT, 'apps/authorization/templates/static')
 ]
+
+LOGIN_URL = '/auth/login/'
+
+
 
 

@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
-    path('test/', include("social_network.urls")),
+    path('test/', include("itis_project.apps.social_network.urls")),
+    path('auth/', include("itis_project.apps.authorization.urls")),
     path('admin/', admin.site.urls),
 ]

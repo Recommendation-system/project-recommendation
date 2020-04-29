@@ -2,11 +2,11 @@ from django.urls import path
 
 from .views import *
 
-app_name = 'test'
 
 urlpatterns = [
-    path('feed/like/', like_post, name='like-post'),
-    path('feed/', feed, name='post-list'),
-    path('login/', login),
-    path('register/', register),
+    path('feed/', feed_list, name='feed_url'),
+    path('feed/post/like/', like_post, name='like-post'),
+    path('create/post/', create_post, name='create_post_url'),
+    path('post/<str:post_slug>/', post_details, name='post_detail_url'),
 ]
+
