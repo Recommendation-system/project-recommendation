@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'itis_project.apps.social_network',
+    'social_django',
+    'itis_project.apps.content',
     'itis_project.apps.authorization',
 
 ]
@@ -60,7 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(PROJECT_ROOT, 'apps/social_network/templates'),
+            os.path.join(PROJECT_ROOT, 'apps/content/templates'),
             os.path.join(PROJECT_ROOT, 'apps/authorization/templates')
         ]
         ,
@@ -128,7 +129,37 @@ STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'apps/authorization/templates/static')
 ]
 
-LOGIN_URL = '/auth/login/'
+LOGIN_URL = '/auth/home/'
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.vk.VKOAuth2',          # бекенд авторизации через ВКонтакте
+    'django.contrib.auth.backends.ModelBackend', # бекенд классической аутентификации, чтобы работала авторизация через
+                                                 # обычный логин и пароль
+)
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # Добавил эту строку
+            ],
+        },
+    },
+]
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '7445758'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'aRhQp7GsoOKgoua8UH42'
+
+LOGIN_REDIRECT_URL = '/test/feed/'
+
+
 
 
 

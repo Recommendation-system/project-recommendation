@@ -1,4 +1,4 @@
-{% extends 'social_network/main.html' %}
+{% extends 'content/main.html' %}
 
 {% block title %}Пост{% endblock %}
 
@@ -7,5 +7,8 @@
             <h2>{{ post.author }}</h2>
             <p>{{ post.content }}</p>
             <p>{{ post.published|date:"d.m.Y H:i:s" }}</p>
+            {% if owner == 'True' %}
+                <a type="button" href="{% url 'post_edit_url' post_slug=post.slug %}" class="btn-success">Edit</a>
+            {% endif %}
         </div>
 {% endblock %}

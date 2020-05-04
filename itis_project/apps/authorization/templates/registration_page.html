@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Регистрация</title>
+	<link rel = "stylesheet" href = "{% static 'css/registration_page_style.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div id = "logo">
+		<a href = "#"><span>IT</span> stud</a>
+	</div>
+	<div class = "form">
+		<form method="post" action="{% url 'registration_url' %}">
+            {% csrf_token %}
+{#			<p id = "error">Пользователь с таким именем уже существует</p>#}
+            {% if error %}
+                <p id = "error">{{ error }}</p>
+            {% else %}
+                <p id = "info">Пожалуйста, заполните все поля</p>
+            {% endif %}
+			<input type="text" name="username" placeholder="Никнейм"><br>
+			<select name = "course">
+				<option>1 курс</option>
+				<option>2 курс</option>
+				<option>3 курс</option>
+				<option>4 курс</option>
+			</select><br>
+			<input type="password" name="password1" placeholder="Пароль"><br>
+			<input type="password" name="password2" placeholder="Повторите пароль"><br>
+			<button>Регистрация</button><br>
+		</form>
+	</div>
+</body>
+</html>

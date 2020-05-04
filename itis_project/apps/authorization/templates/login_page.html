@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Авторизация</title>
+	<link rel = "stylesheet" href = "{% static 'css/login_page_style.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div id = "logo">
+		<a href = "#"><span>IT</span> stud</a>
+	</div>
+	<div class = "form">
+		<form action="{% url 'login_url' %}" method="post">
+            {% csrf_token %}
+			<p id = "error">Неверное имя пользователя или пароль</p>
+			<input type="text" name="username" placeholder="Никнейм"><br>
+			<input type="password" name="password" placeholder="Пароль"><br>
+			<button type="submit">Войти</button><br>
+		</form>
+		<div class = "social_networks">
+			<p>Авторизоваться с помощью:</p>
+			<a href = "/auth/login/vk-oauth2"><img src = "{% static 'img/vk.png' %}" alt=""></a>
+		</div>
+	</div>
+</body>
+</html>

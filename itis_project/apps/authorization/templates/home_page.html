@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>ITstud – Домашняя страница</title>
+	<link rel = "stylesheet" href = "{% static 'css/home_page_style.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div id = "logo">
+		<p><span>IT</span>IS <span>stud</span>y</p>
+	</div>
+	<div id = "slogan">
+		<p>Все,</p>
+		<p>что нужно,</p>
+		<p>под рукой</p>
+	</div>
+	<div class = "buttons">
+		<form>
+            <input type="button" value="Вход" onclick="location.href='{% url 'login_url' %}'">
+            <input type="button" value="Регистрация" onclick="location.href='{% url 'registration_url' %}'">
+		</form>
+	</div>
+</body>
+</html>

@@ -1,20 +1,28 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
 from django.template.context_processors import csrf
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
+from django.utils.text import slugify
 from django.views.generic import View
 from django.contrib import auth
 from django.shortcuts import redirect
 
 
-class LoginInView(View):
+# TODO Пользователь не может попасть на страницу авторизации если он уже авторизован, с вк сделать что то
+# TODO Длинна имени пользователя
+
+def home(request):
+
+    return render(request, 'home_page.html')
+
+
+class LoginView(View):
     def get(self, request):
         args = {}
         args.update(csrf(request))
-        return render(request, 'login_in_page.html', args)
+        return render(request, 'login_page.html', args)
 
     def post(self, request):
-
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = auth.authenticate(username=username, password=password)
@@ -24,8 +32,8 @@ class LoginInView(View):
             auth.login(request, user)
             return redirect(reverse('feed_url'))
         else:
-            args['login_error'] = 'Неверный имя пользователя или пароль'
-            return render(request, 'login_in_page.html', args)
+            args['error'] = 'Неверное имя пользователя или пароль'
+            return render(request, 'login_page.html', args)
 
 
 def logout(request):
@@ -33,19 +41,22 @@ def logout(request):
     return redirect('feed_url')
 
 
-class RegisterView(View):
+class RegistrationView(View):
     def get(self, request):
         form = UserCreationForm()
-        return render(request, 'register_page.html', {'form': form})
+        return render(request, 'registration_page.html', {'form': form})
 
     def post(self, request):
         form = UserCreationForm(request.POST)
         args = {}
         if form.is_valid():
             form.save()
-            return redirect('feed_url')
+            return redirect('login_url')
         else:
-            args['register_error'] = form.errors
-            return render(request, 'register_page.html', args)
+            keys = list(form.errors.keys())
+            if keys[0] == 'username':
+                error = 'Пользователь с таким именем уже существует'
+            else:
+                error = 'Пароль слишком простой, либо пароли не совпадают'
 
-
+            return render(request, 'registration_page.html', {'error': error})

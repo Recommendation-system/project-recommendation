@@ -23,7 +23,7 @@
           {% if user.is_authenticated %}
         <li><a class="nav-link btn-danger mr-5" href="{% url 'logout_url'%}">{{ user.get_username }} Logout</a></li>
           {% else %}
-        <li><a class="nav-link btn-danger mr-5" href="{% url 'login_in_url'%}">Login</a></li>
+        <li><a class="nav-link btn-danger mr-5" href="{% url 'login_url'%}">Login</a></li>
           {% endif %}
       </li>
     </ul>

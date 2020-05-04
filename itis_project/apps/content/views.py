@@ -1,7 +1,5 @@
-from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.views.generic import View
 from django.shortcuts import get_object_or_404
 from .forms import PostForm
 
@@ -13,7 +11,9 @@ def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
             return redirect('feed_url')
         return render(request, 'create_post.html', {'form': form})
     else:
@@ -21,6 +21,7 @@ def create_post(request):
         return render(request, 'create_post.html', {'form': form})
 
 
+@login_required
 def feed_list(request):
     posts = Post.objects.all()
     user = request.user
@@ -34,7 +35,27 @@ def feed_list(request):
 @login_required
 def post_details(request, post_slug):
     post = get_object_or_404(Post, slug__iexact=post_slug)
-    return render(request, 'post.html', context={'post': post})
+    owner = 'False'
+    if request.user == post.author:
+        owner = 'True'
+    return render(request, 'post.html', context={'post': post, 'owner': owner})
+
+
+@login_required
+def post_edit(request, post_slug):
+    post = Post.objects.get(slug__iexact=post_slug)
+    if request.user == post.author:
+        if request.method == 'POST':
+            form = PostForm(request.POST, instance=post)
+            if form.is_valid():
+                post = form.save()
+                post.save()
+                return redirect('feed_url')
+        else:
+            form = PostForm(instance=post)
+            return render(request, 'edit_post.html', context={'form': form, 'post': post})
+    else:
+        return redirect('feed_url')
 
 
 @login_required

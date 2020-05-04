@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	background-image: url(../img/main_img.jpg);
+	background-color: black;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+#logo {
+	display: inline-block;
+	position: relative;
+	left: 4vw;
+	top: 2.1vw;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+#logo p {
+	margin: 0px;
+	font-family: Mukta;
+	font-size: 6.5vw;
+	color: white;
+	letter-spacing: 1.5vw;
+	font-weight: 600;
+}
+
+#logo p span{
+	color: #DB0D3B;
+}
+
+#slogan {
+	width: 25%;
+	display: inline-block;
+	color: white;
+	position: absolute;
+	left: 6vw;
+	top: 9vw;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+#slogan p{
+	font-size: 2.5vw;
+	letter-spacing: 0.2vw;
+	transform: rotate(10deg);
+	word-spacing: 0.5vw;
+	text-shadow: 2px 2px 2px #DB0D3B, -2px -2px 2px #DB0D3B, -2px 2px 2px #DB0D3B, 2px -2px 2px #DB0D3B;
+	padding-bottom: 3vw;	
+}
+
+#slogan p:first-child{
+	padding-bottom: 7vw;
+	position: relative;
+	left: -1.3vw;
+	transform: rotate(-20deg);
+}
+
+#slogan p:last-child{
+	margin-left: 1vw; 
+	transform: rotate(-5deg);
+}
+
+.buttons {
+	display: inline-block;
+	position: relative;
+	left: 14.5vw;
+	top: 38vw;
+}
+
+.buttons form input:first-child {
+	display: inline;
+	background-color: #DB0D3B;
+	color: white;
+	border-radius: 1vw;
+	width: 17.5vw;
+	height: 5vw;
+	font-size: 2vw;
+	font-weight: 600;
+	letter-spacing: 0.2vw;
+	border: none;
+	margin-right: 4vw;
+	margin-bottom: 3vw; 
+	outline: none;
+	border: none;
+}
+
+.buttons form input:last-child{
+	display: inline;
+	background-color: while;
+	color: #DB0D3B;
+	border-radius: 1vw;
+	width: 17.5vw;
+	height: 5vw;
+	font-size: 2vw;
+	font-weight: 600;
+	letter-spacing: 0.2vw;
+	border: none;
+	outline: none;
+}
+
+.buttons form input:first-child:hover{
+	background-color: #C00;
+
+}
+
+.buttons form input:last-child:hover {
+	background-color: #CCC;
+
+}
