@@ -1,9 +1,29 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
-from .forms import PostForm
+from .forms import PostForm, ProfileForm
 
 from .models import *
+
+
+@login_required
+def profile_edit(request):
+    profile = UserProfile.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = ProfileForm(data=request.POST, files=request.FILES, instance=profile)
+        if form.is_valid():
+            image = form.save(commit=False)
+            file_size = image.avatar.size
+            limit_kb = 512
+            if file_size < limit_kb * 1024:
+                image.save()
+                return redirect('profile-edit')
+
+            return render(request, 'profile_edit.html', {'profile': profile, 'form': form, 'errors': 'limit size'})
+        return render(request, 'profile_edit.html', {'profile': profile, 'form': form, 'errors': form.errors})
+    else:
+        form = ProfileForm(instance=profile)
+        return render(request, 'profile_edit.html', {'profile': profile, 'form': form})
 
 
 @login_required

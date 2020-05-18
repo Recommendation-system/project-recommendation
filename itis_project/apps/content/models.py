@@ -6,6 +6,16 @@ from django.shortcuts import reverse
 from django.utils.text import slugify
 
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True, verbose_name='Пользователь')
+    avatar = models.ImageField(upload_to='avatars/', default="avatars/default.jpg", null=True,
+                               blank=True, verbose_name='Аватар')
+    registration_date = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Зарегестрирован')
+
+    def __str__(self):
+        return self.user.username
+
+
 class Post(models.Model):
     slug = models.CharField(max_length=100, unique=True)
     author = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Автор')

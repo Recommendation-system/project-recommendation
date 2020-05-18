@@ -159,6 +159,9 @@ SOCIAL_AUTH_VK_OAUTH2_SECRET = 'aRhQp7GsoOKgoua8UH42'
 
 LOGIN_REDIRECT_URL = '/test/feed/'
 
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+MEDIA_URL = '/media/'
+
 
 
 

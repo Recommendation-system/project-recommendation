@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.template.context_processors import csrf
 from django.urls import reverse
@@ -10,6 +11,9 @@ from django.shortcuts import redirect
 
 # TODO Пользователь не может попасть на страницу авторизации если он уже авторизован, с вк сделать что то
 # TODO Длинна имени пользователя
+
+from itis_project.apps.content.models import UserProfile
+
 
 def home(request):
 
@@ -48,9 +52,11 @@ class RegistrationView(View):
 
     def post(self, request):
         form = UserCreationForm(request.POST)
-        args = {}
         if form.is_valid():
             form.save()
+            profile = UserProfile()
+            profile.user = auth.models.User.objects.get(username=form.cleaned_data.get('username'))
+            profile.save()
             return redirect('login_url')
         else:
             keys = list(form.errors.keys())

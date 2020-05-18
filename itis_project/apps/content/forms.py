@@ -1,6 +1,5 @@
-from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .models import Post
+from .models import Post, UserProfile
 
 
 class PostForm(forms.ModelForm):
@@ -13,3 +12,9 @@ class PostForm(forms.ModelForm):
             'theme': forms.Select(attrs={'class': 'form-control', 'name': 'theme'}),
             'text': forms.Textarea(attrs={'class': 'form-control', 'name': 'text'}),
         }
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['avatar']
