@@ -157,7 +157,7 @@ TEMPLATES = [
 SOCIAL_AUTH_VK_OAUTH2_KEY = '7445758'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'aRhQp7GsoOKgoua8UH42'
 
-LOGIN_REDIRECT_URL = '/test/feed/'
+LOGIN_REDIRECT_URL = '/auth/vk-auth-check/'
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'

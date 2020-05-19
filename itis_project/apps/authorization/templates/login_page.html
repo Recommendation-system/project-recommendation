@@ -8,13 +8,13 @@
 </head>
 <body>
 	<div id = "logo">
-		<a href = "#"><span>IT</span> stud</a>
+		<a href = "{% url 'home_url' %}"><span>IT</span> stud</a>
 	</div>
 	<div class = "form">
 		<form action="{% url 'login_url' %}" method="post">
             {% csrf_token %}
-			<p id = "error">Неверное имя пользователя или пароль</p>
-			<input type="text" name="username" placeholder="Никнейм"><br>
+			<p id = "error">{{ info }}</p>
+			<input type="text" name="username" placeholder="Никнейм" maxlength="15"><br>
 			<input type="password" name="password" placeholder="Пароль"><br>
 			<button type="submit">Войти</button><br>
 		</form>

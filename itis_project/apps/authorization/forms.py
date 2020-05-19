@@ -7,4 +7,3 @@ class AuthUserForm(AuthenticationForm, forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'password')
-

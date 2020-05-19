@@ -59,18 +59,9 @@ body {
 	left: 8.5vw;
 }
 
-#error{
+#info {
 	position: relative;
 	left: -2vw;
-	color: #DB0D3B;
-	letter-spacing: 0.1vw;
-	font-size: 1vw;
-	font-weight: 700;
-}
-
-#info{
-	position: relative;
-	right: -2vw;
 	color: #DB0D3B;
 	letter-spacing: 0.1vw;
 	font-size: 1vw;

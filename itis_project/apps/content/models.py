@@ -11,9 +11,15 @@ class UserProfile(models.Model):
     avatar = models.ImageField(upload_to='avatars/', default="avatars/default.jpg", null=True,
                                blank=True, verbose_name='Аватар')
     registration_date = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Зарегестрирован')
+    course_number = models.IntegerField(default=1, verbose_name="Курс")
 
     def __str__(self):
         return self.user.username
+
+    class Meta:
+        verbose_name_plural = 'Профили'
+        verbose_name = 'Профиль'
+        ordering = ['user']
 
 
 class Post(models.Model):

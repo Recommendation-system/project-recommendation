@@ -1,6 +1,4 @@
-from django.conf.urls import url
 from django.urls import path, include
-from django.views.generic import RedirectView
 
 from .views import *
 
@@ -9,5 +7,6 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login_url'),
     path('logout/', logout, name='logout_url'),
     path('registration/', RegistrationView.as_view(), name='registration_url'),
+    path('vk-auth-check/', vk_auth_check, name='vk-auth-check'),
     path('', include('social_django.urls'), name='auth-with-vk_url'),
 ]
