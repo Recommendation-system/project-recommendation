@@ -9,21 +9,22 @@ from .models import *
 @login_required
 def profile_edit(request):
     profile = UserProfile.objects.get(user=request.user)
+    form = ProfileForm(instance=profile)
+    args = {'avatar': profile.avatar, 'form': form}
     if request.method == 'POST':
         form = ProfileForm(data=request.POST, files=request.FILES, instance=profile)
         if form.is_valid():
             image = form.save(commit=False)
             file_size = image.avatar.size
-            limit_kb = 512
+            limit_kb = 128
             if file_size < limit_kb * 1024:
                 image.save()
-                return redirect('profile-edit')
-
-            return render(request, 'profile_edit.html', {'profile': profile, 'form': form, 'errors': 'limit size'})
-        return render(request, 'profile_edit.html', {'profile': profile, 'form': form, 'errors': form.errors})
+            else:
+                args['size'] = 'Size limit: %s kb' % limit_kb
+        args['errors'] = form.errors
+        return render(request, 'profile_edit.html', args)
     else:
-        form = ProfileForm(instance=profile)
-        return render(request, 'profile_edit.html', {'profile': profile, 'form': form})
+        return render(request, 'profile_edit.html', args)
 
 
 @login_required

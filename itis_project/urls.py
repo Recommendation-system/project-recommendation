@@ -11,7 +11,4 @@ urlpatterns = [
     path('test/', include("itis_project.apps.content.urls")),
     path('auth/', include("itis_project.apps.authorization.urls")),
     path('admin/', admin.site.urls),
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -22,6 +22,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'create_post_url' %}">Create post <span class="sr-only">(current)</span></a>
       </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="{% url 'profile-edit_url' %}">Profile <span class="sr-only">(current)</span></a>
+      </li>
       <li class="nav-item md">
           {% if user.is_authenticated %}
         <li><a class="nav-link btn-danger mr-5" href="{% url 'logout_url'%}">{{ user.get_username }} Logout</a></li>

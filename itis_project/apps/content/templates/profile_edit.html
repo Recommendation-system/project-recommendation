@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile edit</title>
+</head>
+<body>
+    <img src="{{ avatar.url }}">
+    <form action="{% url 'profile-edit_url' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="form-group">
+            {% for field in form %}
+                {{ field.label }}
+                {{ field }}
+                {{ errors }}
+                {{ size }} <br>
+            {% endfor %}
+            <button type="submit" name="button">Send</button>
+        </div>
+    </form>
+    {{ errors }}
+</body>
+</html>
