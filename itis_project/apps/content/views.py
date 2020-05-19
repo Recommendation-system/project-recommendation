@@ -7,24 +7,46 @@ from .models import *
 
 
 @login_required
+def profile(request):
+    user_profile = UserProfile.objects.get(user=request.user)
+    course_num_word = {'1': 'первый', '2': 'второй',
+                       '3': 'третий', '4': 'четвертый'}
+    posts = Post.objects.filter(author=request.user).count
+    likes = Like.objects.filter(user=request.user).count
+    args = {'profile': user_profile, 'post_count': posts, 'like_count': likes,
+            'course': course_num_word.get(str(user_profile.course_number))}
+    return render(request, 'profile_page.html', args)
+
+
+@login_required
 def profile_edit(request):
-    profile = UserProfile.objects.get(user=request.user)
-    form = ProfileForm(instance=profile)
-    args = {'avatar': profile.avatar, 'form': form}
+    user_profile = UserProfile.objects.get(user=request.user)
     if request.method == 'POST':
-        form = ProfileForm(data=request.POST, files=request.FILES, instance=profile)
-        if form.is_valid():
-            image = form.save(commit=False)
-            file_size = image.avatar.size
-            limit_kb = 128
-            if file_size < limit_kb * 1024:
-                image.save()
-            else:
-                args['size'] = 'Size limit: %s kb' % limit_kb
-        args['errors'] = form.errors
-        return render(request, 'profile_edit.html', args)
-    else:
-        return render(request, 'profile_edit.html', args)
+        user_profile.course_number = request.POST.get('course')
+        user_profile.save()
+        return redirect('profile_url')
+
+    args = {'profile': user_profile}
+    return render(request, 'profile_edit_page.html', args)
+# @login_required
+# def profile_edit(request):
+#     profile = UserProfile.objects.get(user=request.user)
+#     form = ProfileForm(instance=profile)
+#     args = {'avatar': profile.avatar, 'form': form}
+#     if request.method == 'POST':
+#         form = ProfileForm(data=request.POST, files=request.FILES, instance=profile)
+#         if form.is_valid():
+#             image = form.save(commit=False)
+#             file_size = image.avatar.size
+#             limit_kb = 128
+#             if file_size < limit_kb * 1024:
+#                 image.save()
+#             else:
+#                 args['size'] = 'Size limit: %s kb' % limit_kb
+#         args['errors'] = form.errors
+#         return render(request, 'profile_edit12.html', args)
+#     else:
+#         return render(request, 'profile_edit12.html', args)
 
 
 @login_required

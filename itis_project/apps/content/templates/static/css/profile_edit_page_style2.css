@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+@font-face{
+	font-family: "Intro";
+	src: url("../font/Intro-reg.ttf");
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-image: url(../img/bg_2.jpg);
+	background-size: 100%;
+	background-repeat: repeat-y; 
+}
+
+header {
+	width: 100%;
+	height: 4.5vw;
+	background-color: #020202;
+	position: fixed;
+	top: 0vw;
+	z-index: 2;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+header #logo {
+	display: inline-block;
+	margin-left: 5vw;
+	margin-top: 0.1vw;
+
+}
+
+header #logo a{
+	text-decoration: none;
+	font-family: Mukta;	
+}
+
+header #logo a img {
+	width: 4vw;
+	height: 4vw;
+}
+
+header #logo #logo_text {
+	position: relative;
+	display: inline-block;
+	top: -1.1vw;
+	color: white;
+	font-size: 3vw;
+	font-weight: 600;
+	word-spacing: -0.5vw;
+	letter-spacing: 0.6vw;
+}
+
+header #logo #logo_text span {
+	color: #DB0D3B;
+}
+
+
+
+header .create_post {
+	display: inline-block;
+	position: relative;
+	top: -0.7vw;
+	margin-left: 50vw;
+}
+
+header .create_post img {
+	width: 2.5vw;
+	height: 2.5vw;
+}
+
+header .create_post a {
+	text-decoration: none;
+	font-size: 1.6vw;
+	color: white;
+}
+
+header .create_post a:hover {
+	color: #AAA;
+}
+
+header .create_post a span {
+	position: relative;
+	top: -0.6vw;
+	margin-right: 0.5vw;
+	font-family: Intro;
+}
+
+
+
+header .user {
+	display: inline-block;
+	position: relative;
+	top: -0.7vw;
+	margin-left: 2vw;
+}
+
+header .user img {
+	display: fixed;
+	width: 2.5vw;
+	height: 2.5vw;
+}
+
+header .user a {
+	text-decoration: none;
+	font-size: 1.6vw;
+	color: white;
+}
+
+header .user a:hover {
+	color: #AAA;
+}
+
+header .user a span {
+	position: relative;
+	top: -0.6vw;
+	margin-right: 0.8vw;
+	font-family: Intro;
+}
+
+#settings {
+	margin: auto;
+	margin-top: 13vw;
+	width: 80vw;
+	height: 35vw;
+}
+
+#change_img {
+	display: inline-block;
+	margin-left: 3.5vw; 
+}
+
+#change_img img {
+	width: 12vw;
+	height: 12vw;
+	display: inline-block;
+}
+
+#change_img form button{
+	width: 17vw;
+	height: 3vw;
+	border-radius: 0.5vw;
+	background-color: #DB0D3B;
+	color: white;
+	font-size: 1.9vw;
+	border: none;
+	margin-top: 1.9vw;
+	position: relative;
+	left: -2.5vw;
+}
+
+#change_name {
+	width: 58vw;
+	display: inline-block;
+	color: white;
+	position: relative;
+	top: -12.5vw;
+}
+
+#change_name p:first-child {
+	font-size: 4vw;
+	font-family: Intro;
+	display: inline-block;
+	margin: 0px;
+	padding: 0px;
+
+}
+
+#change_name #name_error {
+	font-size: 1vw;
+	color: #DB0D3B;
+	display: inline-block;
+	margin-left: 3vw; 
+}
+
+#change_name form{
+	display: inline-block;
+}
+
+#change_name form input {
+	width: 19vw;
+	height: 3vw;
+	border-radius: 0.5vw;
+	font-size: 1.8vw;
+	background-color: #C4C4C4;
+	margin-left: 3vw;
+	border: none;
+	outline: none; 
+	padding-left: 1vw;
+}
+
+#change_name form button {
+	width: 17vw;
+	height: 3vw;
+	border-radius: 0.5vw;
+	background-color: #DB0D3B;
+	color: white;
+	font-size: 1.9vw;
+	border: none;
+	margin-left: 3vw;
+	outline: none; 
+}
+
+
+#change_course {
+	width: 58vw;
+	display: inline-block;
+	color: white;
+	position: relative;
+	top: -10.5vw;
+	margin-left: 21vw;
+}
+
+#change_course p:first-child {
+	font-size: 3vw;
+	font-family: Intro;
+	display: inline-block;
+	margin: 0px;
+	padding: 0px;
+
+}
+
+#change_course form{
+	display: inline-block;
+}
+
+#change_course form select {
+	-webkit-appearance: none;
+	-moz-appearance:none;
+	-ms-appearance:none; /* удаление стандартного курсора */
+	background: url(../img/arrow.png) no-repeat right; /* добавление нового курсора */
+	background-size: 7%;	/* размер изображения */
+	background-position-x: calc(100% - 95%); /* смещение курсора-треугольника относительно поля*/
+	width: 17vw;
+	height: 3vw;
+	border-radius: 0.5vw;
+	font-size: 1.8vw;
+	background-color: #C4C4C4;
+	margin-left: 3vw;
+	padding-left: 2.5vw;
+	color: #777;
+	border: none;
+	outline: none;
+}
+
+#change_course form button {
+	width: 17vw;
+	height: 3vw;
+	border-radius: 0.5vw;
+	background-color: #DB0D3B;
+	color: white;
+	font-size: 1.9vw;
+	border: none;
+	margin-left: 3vw;
+	border: none;
+	outline: none; 
+}

@@ -126,7 +126,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, 'apps/authorization/templates/static')
+    os.path.join(PROJECT_ROOT, 'apps/authorization/templates/static'),
+    os.path.join(PROJECT_ROOT, 'apps/content/templates/static')
 ]
 
 LOGIN_URL = '/auth/home/'

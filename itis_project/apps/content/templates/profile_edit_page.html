@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>ITIS study – Настройки</title>
+	<link rel="stylesheet" href="{% static 'css/profile_edit_page_style2.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	<body>
+		<header>
+            <div id = "logo">
+                <a href = "{% url 'feed_url' %}"><img src = "{% static 'img/logo.png' %}"><div id = "logo_text"><span>IT</span> stud</div></a>
+            </div>
+            <div class = "create_post">
+                <a href="{% url 'create_post_url' %}"><span>Создать пост</span><img src = "{% static 'img/asteroid.png' %}"></a>
+            </div>
+            <div class = "user">
+                <a href="{% url 'profile_url' %}"><span>{{ profile.user.username }}</span><img src = "{% static 'img/mini-astronaut.png' %}"></a>
+            </div>
+        </header>
+		<div id = "settings">
+			<div id = "change_img">
+				<img src = "{% static 'img/astronaut.png' %}">
+				<form>
+					<button>Аватар</button>
+				</form>
+			</div>
+			<div id = "change_name">
+				<p>{{ profile.user.username }}</p>
+			</div>
+			<div id = "change_course">
+				<p>Курс:</p>
+				<form action="{% url 'profile-edit_url' %}" method="post">
+                    {% csrf_token %}
+					<select name = "course" d>
+                        <option value="1">1 курс</option>
+                        <option value="2">2 курс</option>
+                        <option value="3">3 курс</option>
+                        <option value="4">4 курс</option>
+                    </select>
+					<button type="submit">Применить</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
