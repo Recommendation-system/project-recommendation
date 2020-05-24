@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>ITIS study – Настройки</title>
-	<link rel="stylesheet" href="{% static 'css/profile_edit_page_style2.css' %}">
+	<link rel="stylesheet" href="{% static 'css/profile_edit_page_style4.css' %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 	<body>
@@ -32,7 +32,7 @@
 				<p>Курс:</p>
 				<form action="{% url 'profile-edit_url' %}" method="post">
                     {% csrf_token %}
-					<select name = "course" d>
+					<select name = "course">
                         <option value="1">1 курс</option>
                         <option value="2">2 курс</option>
                         <option value="3">3 курс</option>

@@ -9,7 +9,7 @@ body {
 	padding: 0px;
 	background-image: url(../img/bg_2.jpg);
 	background-size: 100%;
-	background-repeat: repeat-y; 
+	background-repeat: repeat-y;
 }
 
 header {
@@ -60,9 +60,9 @@ header #logo #logo_text span {
 
 header .create_post {
 	display: inline-block;
-	position: relative;
-	top: -0.7vw;
-	margin-left: 50vw;
+	position: absolute;
+	top: 0.7vw;
+	right: 19vw;
 }
 
 header .create_post img {
@@ -90,16 +90,18 @@ header .create_post a span {
 
 
 header .user {
-	display: inline-block;
-	position: relative;
-	top: -0.7vw;
-	margin-left: 2vw;
+	display: inline;
+	position: absolute;
+	top: 0.7vw;
+	right: 0;
+	margin-right: 2vw;
 }
 
 header .user img {
-	position: relative;
+	display: inline-block;
 	width: 2.5vw;
 	height: 2.5vw;
+	margin-right: 2vw;
 }
 
 header .user a {
@@ -119,81 +121,58 @@ header .user a span {
 	font-family: Intro;
 }
 
-.information_about_user {
-	display: inline-block;
-	margin-top: 13vw;
-	margin-left: 15vw; 
-	width: 40vw;
-	height: 30vw;
-	margin-bottom: 5vw;
+#post {
+	background-color: #FFF;
+	border-radius: 0.2vw;
+	margin-top: 10vw;
+	margin-right: 25vw;
+	margin-left: 25vw;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	margin-bottom: 2vw;
+	box-shadow: none;
+	transition: 2s;
 }
 
-.main_information img{
-	width: 12vw;
-	height: 12vw;
-	display: inline-block;
+#post .title {
+	font-size: 1.4vw;
+	letter-spacing: 0.1vw;
+	font-family: Intro;
+	font-weight: 600;
 }
 
-.main_information div {
-	position: relative;
-	top: -3vw;
-	margin-left: 4vw;
-	display: inline-block;
-	font-size: 2.8vw;
-	color: white;
+#post .content {
+	font-size: 1.4vw;
+	font-family: Intro;
 	line-height: 2vw;
+}
+
+#post .autor {
 	font-family: Intro;
-}
-
-.main_information div p:first-child{
-	font-size: 4vw;
-}
-
-.add_information p{
-	color: white;
-	font-size: 2vw;
-	line-height: 1vw;
-	font-family: Intro;
-}
-
-.add_information p:first-child{
-	font-size: 3vw;
-}
-
-
-.buttons {
+	font-size: 1.2vw;
 	display: inline-block;
-	position: relative;
-	top: -20vw;
-	left: 20vw;
+	margin-right: 18vw;
+}
+
+#post .likes {
+	display: inline-block;
+}
+
+#post .likes form p {
+	display: inline-block;
+	font-size: 1.2vw;
 	font-family: Intro;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
 }
 
-.buttons p:last-child{
+#post .likes form a img {
+	display: inline-block;
+	width: 2vw;
+	height: 2vw;
 	position: relative;
-	left: 7vw;
-	display: inline;
+	top: 0.5vw;
+
 }
 
-.buttons p a {
-	text-decoration: none;
-	color: white;
-	font-size: 2vw;
-}
-
-.buttons p a:hover {
-	color: #AAA;
-}
-
-.buttons p a img {
-	width: 4vw;
-	height: 4vw;
-}
-
-.buttons p a span {
-	position: relative;
-	top: -0.5vw;
+#post .likes #like {
+	display: none;
 }

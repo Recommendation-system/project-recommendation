@@ -5,7 +5,7 @@
 }
 
 body {
-	margin: 0px;
+	margin: 0;
 	padding: 0px;
 	background-image: url(../img/bg_2.jpg);
 	background-size: 100%;
@@ -60,9 +60,9 @@ header #logo #logo_text span {
 
 header .create_post {
 	display: inline-block;
-	position: relative;
-	top: -0.7vw;
-	margin-left: 50vw;
+	position: absolute;
+	top: 0.7vw;
+	right: 19vw;
 }
 
 header .create_post img {
@@ -90,16 +90,18 @@ header .create_post a span {
 
 
 header .user {
-	display: inline-block;
-	position: relative;
-	top: -0.7vw;
-	margin-left: 2vw;
+	display: inline;
+	position: absolute;
+	top: 0.7vw;
+	right: 0;
+	margin-right: 2vw;
 }
 
 header .user img {
-	display: fixed;
+	display: inline-block;
 	width: 2.5vw;
 	height: 2.5vw;
+	margin-right: 2vw;
 }
 
 header .user a {

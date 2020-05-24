@@ -1,9 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
-from .forms import PostForm, ProfileForm
+from .forms import PostForm
 
 from .models import *
+
+# TODO redirection after liking
 
 
 @login_required
@@ -28,40 +30,29 @@ def profile_edit(request):
 
     args = {'profile': user_profile}
     return render(request, 'profile_edit_page.html', args)
-# @login_required
-# def profile_edit(request):
-#     profile = UserProfile.objects.get(user=request.user)
-#     form = ProfileForm(instance=profile)
-#     args = {'avatar': profile.avatar, 'form': form}
-#     if request.method == 'POST':
-#         form = ProfileForm(data=request.POST, files=request.FILES, instance=profile)
-#         if form.is_valid():
-#             image = form.save(commit=False)
-#             file_size = image.avatar.size
-#             limit_kb = 128
-#             if file_size < limit_kb * 1024:
-#                 image.save()
-#             else:
-#                 args['size'] = 'Size limit: %s kb' % limit_kb
-#         args['errors'] = form.errors
-#         return render(request, 'profile_edit12.html', args)
-#     else:
-#         return render(request, 'profile_edit12.html', args)
 
 
 @login_required
 def create_post(request):
+    subjects = []
+    for i in range(4):
+        subjects.append(Subject.objects.filter(course_number=i + 1))
+
+    args = {'username': request.user.username, 'subjects': subjects}
+
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            post.subject = Subject.objects.get(name=request.POST.get('subject'))
             post.save()
             return redirect('feed_url')
-        return render(request, 'create_post.html', {'form': form})
     else:
         form = PostForm
-        return render(request, 'create_post.html', {'form': form})
+
+    args['form'] = form
+    return render(request, 'create_post.html', args)
 
 
 @login_required
@@ -78,10 +69,12 @@ def feed_list(request):
 @login_required
 def post_details(request, post_slug):
     post = get_object_or_404(Post, slug__iexact=post_slug)
-    owner = 'False'
+    args = {'post': post, 'owner': 'False', 'username': request.user.username}
+
     if request.user == post.author:
-        owner = 'True'
-    return render(request, 'post.html', context={'post': post, 'owner': owner})
+        args['owner'] = 'True'
+
+    return render(request, 'post.html', args)
 
 
 @login_required

@@ -4,9 +4,9 @@ from .models import *
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('theme', 'author', 'content', 'published')
-    list_display_links = ('theme', 'content')
-    search_fields = ('theme', 'content')
+    list_display = ('subject', 'author', 'content', 'published')
+    list_display_links = ('subject', 'content')
+    search_fields = ('subject', 'content')
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -16,6 +16,6 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Post, PostAdmin)
-admin.site.register(Theme)
+admin.site.register(Subject)
 admin.site.register(Like)
 admin.site.register(Comment)
