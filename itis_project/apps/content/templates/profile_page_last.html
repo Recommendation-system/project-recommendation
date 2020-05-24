@@ -5,6 +5,7 @@
 	<title>ITIS study – Профиль</title>
 	<link rel="stylesheet" href="{% static 'css/profile_page_style1.css' %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
 </head>
 <body>
 	<header>
@@ -20,9 +21,9 @@
 	</header>
 	<div class = "information_about_user">
 		<div class = "main_information">
-			<img src = {% static 'img/astronaut.png' %}>
+			<img src = "{% static 'img/astronaut.png' %}">
 			<div>
-				<p>{{ profile.user.username }}</p>
+				<p>{{ profile.user.username }}</p> <!-- максимальное количесво символов - 10 -->
 				<p>Курс: {{ course }}</p>
 			</div>
 		</div>
