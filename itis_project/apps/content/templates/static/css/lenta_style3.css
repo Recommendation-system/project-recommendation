@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+@font-face{
+	font-family: "Intro";
+	src: url("../font/Intro-reg.ttf");
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-image: url(../img/bg_3.jpg);
+	background-size: 100%;
+	background-repeat: repeat-y;
+}
+
+header {
+	width: 100%;
+	height: 4.5vw;
+	background-color: #020202;
+	position: fixed;
+	top: 0vw;
+	z-index: 2;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+header #logo {
+	display: inline-block;
+	margin-left: 5vw;
+	margin-top: 0.1vw;
+
+}
+
+header #logo a{
+	text-decoration: none;
+	font-family: Mukta;	
+}
+
+header #logo a img {
+	width: 4vw;
+	height: 4vw;
+}
+
+header #logo #logo_text {
+	position: relative;
+	display: inline-block;
+	top: -1.1vw;
+	color: white;
+	font-size: 3vw;
+	font-weight: 600;
+	word-spacing: -0.5vw;
+	letter-spacing: 0.6vw;
+}
+
+header #logo #logo_text span {
+	color: #DB0D3B;
+}
+
+
+
+header .create_post {
+	display: inline-block;
+	position: absolute;
+	top: 0.7vw;
+	right: 19vw;
+}
+
+header .create_post img {
+	width: 2.5vw;
+	height: 2.5vw;
+}
+
+header .create_post a {
+	text-decoration: none;
+	font-size: 1.6vw;
+	color: white;
+}
+
+header .create_post a:hover {
+	color: #AAA;
+}
+
+header .create_post a span {
+	position: relative;
+	top: -0.6vw;
+	margin-right: 0.5vw;
+	font-family: Intro;
+}
+
+
+
+header .user {
+	display: inline;
+	position: absolute;
+	top: 0.7vw;
+	right: 0;
+	margin-right: 2vw;
+}
+
+header .user img {
+	display: inline-block;
+	width: 2.5vw;
+	height: 2.5vw;
+	margin-right: 2vw;
+}
+
+header .user a {
+	text-decoration: none;
+	font-size: 1.6vw;
+	color: white;
+}
+
+header .user a:hover {
+	color: #AAA;
+}
+
+header .user a span {
+	position: relative;
+	top: -0.6vw;
+	margin-right: 0.8vw;
+	font-family: Intro;
+}
+
+.topics select {
+	margin-top: 7vw; 
+	margin-left: 35vw;
+	margin-right: 30vw;
+	display: inline-block;
+	-webkit-appearance: none;
+	-moz-appearance:none;
+	-ms-appearance:none; /* удаление стандартного курсора */
+	background: url(../img/arrow_2.png) no-repeat right; /* добавление нового курсора */
+	background-size: 5%;	/* размер изображения */
+	width: 33vw;
+	height: 3vw;
+	border-radius: 0.5vw;
+	font-size: 2vw;
+	padding-left: 1.5vw;
+	font-weight: 600;
+	color: white;
+	border: none;
+	outline: none;
+	font-family: Intro;
+	letter-spacing: 0.3vw;
+	margin-bottom: 2vw;
+}
+
+.topics select option {
+	color:#fff;
+  	background:#369;
+}
+
+#content {
+	min-height: calc(100vh - 10.5vw);
+	margin-bottom:  -1vw;
+}
+
+.articles {
+	display: inline-block;
+	width: 50vw;
+	margin-left: 10vw;
+	
+}
+
+.articles .background {
+	background: #7010AC;
+	border-radius: 1vw;
+	width: 100%;
+}
+
+.articles .background .post {
+	background-color: #FFF;
+	border-radius: 0.2vw;
+	margin-bottom: 2vw;
+	box-shadow: none;
+	width: 92%;
+	margin-left: 4vw;
+	border-radius: 1vw;
+}
+
+.articles .background .post .title {
+	font-size: 1.4vw;
+	letter-spacing: 0.1vw;
+	font-family: Intro;
+	font-weight: 600;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	padding-top: 0.1vw;
+}
+
+.articles .background .post .content {
+	font-size: 1.4vw;
+	font-family: Intro;
+	line-height: 2vw;
+	padding-left: 1vw;
+	padding-right: 1vw;
+}
+
+.articles .background .post .read-more {
+	font-family: Intro;
+	font-size: 1vw;
+	padding-left: 1vw;
+}
+
+.articles .background .post .author {
+	font-family: Intro;
+	font-size: 1.2vw;
+	display: inline-block;
+	margin-right: 14vw;
+	padding-left: 1vw;
+}
+
+.articles .background .post .likes {
+	display: inline-block;
+}
+
+.articles .background .post .likes form p {
+	display: inline-block;
+	font-size: 1.2vw;
+	font-family: Intro;
+}
+
+.articles .background .post .likes form a img {
+	display: inline-block;
+	width: 2vw;
+	height: 2vw;
+	position: relative;
+	top: 0.5vw;
+
+}
+
+.pages {
+	display: block;
+	width: 24vw;
+	margin-left: 20vw;
+	margin-bottom: 5vw;
+	margin-top: 1.5vw;
+	text-align: center;
+}
+
+.pages a {
+	background-color: white;
+	display: inline-block;
+	margin-left: 1.5vw;
+	font-family: Intro;
+	font-size: 1.5vw;
+	text-align: center;
+	width: 3vw;
+	height: 2.5vw;
+	padding-top: 0.7vw; 
+	border-radius: 0.5vw;
+	text-decoration: none;
+}
+
+footer {
+	width: 100%;
+	background-color: white;
+}
+
+footer p {
+	margin: 0;
+	font-size: 1.5vw;
+	font-family: Intro;
+	text-align: center;
+}

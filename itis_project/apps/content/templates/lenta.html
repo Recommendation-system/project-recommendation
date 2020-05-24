@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>ITIS study – Лента</title>
+	<link rel="stylesheet" href="{% static 'css/lenta_style3.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<header>
+		<div id = "logo">
+			<a href = "{% url 'feed_url' %}"><img src = "{% static 'img/logo.png' %}"><div id = "logo_text"><span>IT</span> stud</div></a>
+		</div>
+		<div class = "create_post">
+			<a href="{% url 'create_post_url' %}"><span>Создать пост</span><img src = "{% static 'img/asteroid.png' %}"></a>
+		</div>
+		<div class = "user">
+			<a href="{% url 'profile_url' %}"><span>{{ username }}</span><img src = "{% static 'img/mini-astronaut.png' %}"></a>
+		</div>
+	</header>
+	<div id = "content">
+		<div class="topics">
+            <select onchange="location.href=this.value">
+                <option value="?page=1&subject=recommend">Рекомендации</option>
+                {% for subj in subjects %}
+                    {% if subj == subject_selected %}
+                        <option selected value="?page=1&subject={{ subj.id }}" >{{ subj }}</option>
+                    {% else %}
+                        <option value="?page=1&subject={{ subj.id }}" >{{ subj }}</option>
+                    {% endif %}
+                {% endfor %}
+			</select>
+		</div>
+		<<div class="articles">
+			{% for post in paginator_object %}
+                <div class="background">
+                    <div class="post">
+                        <div class="title">
+                            <p>{{ post.title }}</p>
+                        </div>
+                        <div class="content">
+                            <p>{{ post.content }}</p>
+                        </div>
+                        <div class="read-more">
+                            <a href="{{ post.get_absolute_url }}">[Читать дальше]</a>
+                        </div>
+                        <div class="author">
+                            <p>by <span>{{ post.author }}</span> {{ post.published }}</p>
+                        </div>
+                        <div class="likes">
+                            <form id="form" class="card-link" action="{% url 'like-post' %}" method="POST">
+                                <p>Оценили: <span>{{ post.likes.all.count }}</span></p>
+                                {% csrf_token %}
+                                <input type="hidden" name="post_id" value="{{ post.id }}">
+                                {% if user not in post.likes.all %}
+                                    <a href="#" id = "no-like" onclick="document.getElementById('form').submit();
+                                    return false;"><img src = "{% static 'img/like.png' %}"></a>
+                                {% else %}
+                                    <a href="#" id = "like" onclick="document.getElementById('form').submit();
+                                    return false;"><img src="{% static 'img/liking.png' %}"></a>
+                                {% endif %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+		</div>
+		<div class="pages">
+			<a href="{{ previous_url }}">&laquo;</a>
+            {% for number in paginator_object.paginator.page_range %}
+                {% if paginator_object.number == number %}
+                   <a href="?page={{ number }}">{{ number }}</a>
+                {% elif number > paginator_object.number|add:-2 and number < paginator_object.number|add:2 %}
+                    <a href="?page={{ number }}">{{ number }}</a>
+                {% endif %}
+            {% endfor %}
+            <a href="{{ next_url }}">&raquo;</a>
+		</div>
+	<footer>
+		<p>ITIS &copy; 2020</p>
+	</footer>
+</body>
+</html>
