@@ -31,7 +31,7 @@
                 {% endfor %}
 			</select>
 		</div>
-		<<div class="articles">
+		<div class="articles">
 			{% for post in paginator_object %}
                 <div class="background">
                     <div class="post">
@@ -48,15 +48,15 @@
                             <p>by <span>{{ post.author }}</span> {{ post.published }}</p>
                         </div>
                         <div class="likes">
-                            <form id="form" class="card-link" action="{% url 'like-post' %}" method="POST">
-                                <p>Оценили: <span>{{ post.likes.all.count }}</span></p>
+                            <form id="form{{ post.id }}" class="card-link" action="{% url 'like-post' %}" method="POST">
                                 {% csrf_token %}
+                                <p>Оценили: <span>{{ post.likes.all.count }}</span></p>
                                 <input type="hidden" name="post_id" value="{{ post.id }}">
                                 {% if user not in post.likes.all %}
-                                    <a href="#" id = "no-like" onclick="document.getElementById('form').submit();
+                                    <a href="#" id = "no-like" onclick="document.getElementById('form{{ post.id }}').submit();
                                     return false;"><img src = "{% static 'img/like.png' %}"></a>
                                 {% else %}
-                                    <a href="#" id = "like" onclick="document.getElementById('form').submit();
+                                    <a href="#" id = "like" onclick="document.getElementById('form{{ post.id }}').submit();
                                     return false;"><img src="{% static 'img/liking.png' %}"></a>
                                 {% endif %}
                             </form>
@@ -66,16 +66,17 @@
             {% endfor %}
 		</div>
 		<div class="pages">
-			<a href="{{ previous_url }}">&laquo;</a>
+			<a href="{{ previous_url }}&subject={{ subject_selected.id }}">&laquo;</a>
             {% for number in paginator_object.paginator.page_range %}
                 {% if paginator_object.number == number %}
-                   <a href="?page={{ number }}">{{ number }}</a>
+                   <a href="?page={{ number }}&subject={{ subject_selected.id }}">{{ number }}</a>
                 {% elif number > paginator_object.number|add:-2 and number < paginator_object.number|add:2 %}
-                    <a href="?page={{ number }}">{{ number }}</a>
+                    <a href="?page={{ number }}&subject={{ subject_selected.id }}">{{ number }}</a>
                 {% endif %}
             {% endfor %}
-            <a href="{{ next_url }}">&raquo;</a>
+            <a href="{{ next_url }}&subject={{ subject_selected.id }}">&raquo;</a>
 		</div>
+    </div>
 	<footer>
 		<p>ITIS &copy; 2020</p>
 	</footer>
