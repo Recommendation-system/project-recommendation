@@ -14,7 +14,7 @@
 		<form method="post" action="{% url 'registration_url' %}">
             {% csrf_token %}
             <p id = "info">{{ info }}</p>
-            <input type="text" name="username" placeholder="Никнейм" maxlength="15"><br>
+            <input type="text" name="username" placeholder="Никнейм" maxlength="12"><br>
 			<select name = "course">
 				<option value="1">1 курс</option>
 				<option value="2">2 курс</option>

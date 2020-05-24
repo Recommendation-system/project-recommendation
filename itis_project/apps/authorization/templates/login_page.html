@@ -14,7 +14,7 @@
 		<form action="{% url 'login_url' %}" method="post">
             {% csrf_token %}
 			<p id = "error">{{ info }}</p>
-			<input type="text" name="username" placeholder="Никнейм" maxlength="15"><br>
+			<input type="text" name="username" placeholder="Никнейм" maxlength="12"><br>
 			<input type="password" name="password" placeholder="Пароль"><br>
 			<button type="submit">Войти</button><br>
 		</form>

@@ -9,13 +9,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('subject', 'content')
 
 
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ('user', 'post', 'created', 'active')
-    list_filter = ('active', 'created', 'updated')
-    search_fields = ('user', 'email', 'body')
-
-
 admin.site.register(Post, PostAdmin)
 admin.site.register(Subject)
 admin.site.register(Like)
-admin.site.register(Comment)
+

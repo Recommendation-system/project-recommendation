@@ -5,11 +5,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import reverse
 from django.utils.text import slugify
 
-# TODO
-
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True, verbose_name='Пользователь')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True, related_name='users', verbose_name='Пользователь')
     registration_date = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Зарегестрирован')
     course_number = models.IntegerField(default=1, verbose_name="Курс")
 
@@ -62,21 +60,6 @@ class Post(models.Model):
         verbose_name_plural = 'Посты'
         verbose_name = 'Пост'
         ordering = ['-published']
-
-
-class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-    active = models.BooleanField(default=True)
-
-    class Meta:
-        ordering = ('created',)
-
-    def __str__(self):
-        return 'Comment by {} on {}'.format(self.user, self.post)
 
 
 LIKE_CHOICES = (

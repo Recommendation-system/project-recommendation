@@ -1,8 +1,11 @@
+from django.conf.urls import url
 from django.urls import path
+from django.views.generic import RedirectView
 
 from .views import *
 
 urlpatterns = [
+    url(r'^$', RedirectView.as_view(url='feed/')),
     path('feed/', feed_list, name='feed_url'),
     path('feed/post/like/', like_post, name='like-post'),
     path('profile/edit/', profile_edit, name='profile-edit_url'),

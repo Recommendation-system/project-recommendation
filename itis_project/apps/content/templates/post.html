@@ -24,6 +24,11 @@
 		</div>
 		<div class="content">
 			<p>{{ post.content }}</p>
+            <p>
+                {% if owner == 'True' %}
+                    <a href="{% url 'post_edit_url' post_slug=post.slug %}">Редактировать запись</a>
+                {% endif %}
+            </p>
 		</div>
 		<div class="autor">
 			<p>by {{ post.author }} {{ post.published }}</p>

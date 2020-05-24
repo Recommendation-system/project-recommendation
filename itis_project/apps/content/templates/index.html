@@ -1,9 +1,9 @@
-{% extends 'content/main.html' %}
+{% extends 'main.html' %}
 
 {% block title %}Статьи{% endblock %}
 
 {% block body %}
-    {% for post in posts %}
+    {% for post in paginator_object %}
         <div class="card">
             <div class="card-body" id="post">
                 <h2 class="card-title">{{ post.title }}</h2>
@@ -20,13 +20,7 @@
                     {% endif %}
                     <strong class="float-xl-right">{{ post.likes.all.count }} likes  -></strong>
                 </form>
-
-
             </div>
-        </div>
-        <div id="post">
-
         </div>
     {% endfor %}
 {% endblock %}
-
