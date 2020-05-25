@@ -9,6 +9,7 @@ urlpatterns = [
     path('feed/', feed_list, name='feed_url'),
     path('feed/post/like/', like_post, name='like-post'),
     path('profile/edit/', profile_edit, name='profile-edit_url'),
+    path('profile/edit/change_password/', change_password, name='change_password_url'),
     path('profile/', profile, name='profile_url'),
     path('create/post/', create_post, name='create_post_url'),
     path('post/<str:post_slug>/', post_details, name='post_detail_url'),

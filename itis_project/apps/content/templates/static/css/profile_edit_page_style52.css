@@ -152,6 +152,12 @@ header .user a span {
 	left: -2.5vw;
 }
 
+#change_img form button a {
+	font-family: Intro;
+	text-decoration: none;
+	color: white;
+}
+
 #change_name {
 	width: 58vw;
 	display: inline-block;
@@ -178,18 +184,6 @@ header .user a span {
 
 #change_name form{
 	display: inline-block;
-}
-
-#change_name form input {
-	width: 19vw;
-	height: 3vw;
-	border-radius: 0.5vw;
-	font-size: 1.8vw;
-	background-color: #C4C4C4;
-	margin-left: 3vw;
-	border: none;
-	outline: none; 
-	padding-left: 1vw;
 }
 
 #change_name form button {

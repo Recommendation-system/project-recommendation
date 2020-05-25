@@ -1,6 +1,8 @@
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
 from django.core.paginator import Paginator
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from .forms import PostForm
@@ -150,6 +152,21 @@ def like_post(request):
                 like.value = 'Like'
         like.save()
     return redirect('/content/post/{}/'.format(post_obj.slug))
+
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+
+            return HttpResponse('Your password was successfully updated!')
+    else:
+        form = PasswordChangeForm(request.user)
+    context = {'form': form}
+    return render(request, 'password_change.html', context=context)
 
 
 def recommend(post):
