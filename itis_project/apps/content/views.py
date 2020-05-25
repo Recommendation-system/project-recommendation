@@ -47,7 +47,6 @@ def feed_list(request):
             user=request.user).course_number).order_by('-likes'))[:15]
         create_recommendations(UserProfile.objects.get(user__username=request.user.username).user, 30)
 
-        print(get_recommendations())
         posts.sort(key=recommend, reverse=True)
     else:
         subj = subjects[0]
@@ -78,7 +77,7 @@ def feed_list(request):
         'previous_url': previous_url
     }
 
-    return render(request, 'lenta.html', context=context)
+    return render(request, 'feed_page.html', context=context)
 
 
 @login_required

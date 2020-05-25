@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>ITIS study – Лента</title>
-	<link rel="stylesheet" href="{% static 'css/lenta_style8.css' %}">
+	<link rel="stylesheet" href="{% static 'css/lenta_style.css' %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -81,5 +81,15 @@
 	<footer>
 		<p>ITIS &copy; 2020</p>
 	</footer>
+    <script>
+        window.onload = function() {
+            var colors = ["#AC9C10", "#10A3AC", "#7010AC"];
+            var posts = document.getElementsByClassName("background");
+            for (var post of posts) {
+                var rand = Math.floor(Math.random() * colors.length);
+                post.style.background = colors[rand]
+            }
+        }
+    </script>
 </body>
 </html>

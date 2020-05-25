@@ -16,7 +16,6 @@ def get_user_rates(course=1, count=20):
             info[user][subject] = profile.user.like_set.filter(post__subject__course_number=course,
                                                                post__subject=subject).count()
             count -= 1
-    print(info)
     return info
 
 

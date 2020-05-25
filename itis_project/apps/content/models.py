@@ -7,7 +7,8 @@ from django.utils.text import slugify
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True, related_name='users', verbose_name='Пользователь')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True, related_name='users',
+                                verbose_name='Пользователь')
     registration_date = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Зарегестрирован')
     course_number = models.IntegerField(default=1, verbose_name="Курс")
 

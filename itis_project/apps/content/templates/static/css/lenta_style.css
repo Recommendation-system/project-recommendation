@@ -56,8 +56,6 @@ header #logo #logo_text span {
 	color: #DB0D3B;
 }
 
-
-
 header .create_post {
 	display: inline-block;
 	position: absolute;
@@ -86,8 +84,6 @@ header .create_post a span {
 	margin-right: 0.5vw;
 	font-family: Intro;
 }
-
-
 
 header .user {
 	display: inline;
@@ -152,8 +148,9 @@ header .user a span {
 }
 
 #content {
-	min-height: calc(100vh - 10.5vw);
+	min-height: 100vh;
 	margin-bottom:  -1vw;
+	height: 100%;
 }
 
 .articles {
