@@ -37,19 +37,20 @@ def profile_edit(request):
 def feed_list(request):
     subjects = Subject.objects.filter(course_number=UserProfile.objects.get(user=request.user).course_number)
 
-    subject_id = request.GET.get('subject', 'recommend')
+    subject_name = request.GET.get('subject', 'recommend')
 
-    if subject_id == 'recommend':
+    if subject_name == 'recommend':
         subj = 'recommend'
         posts = list(Post.objects.filter(subject__course_number=UserProfile.objects.get(
-            user=request.user).course_number))[:15]
+            user=request.user).course_number).order_by('-likes'))[:15]
         create_recommendations(UserProfile.objects.get(user__username=request.user.username).user, 30)
 
-        posts.sort(key=recommend)
+        print(get_recommendations())
+        posts.sort(key=recommend, reverse=True)
     else:
         subj = subjects[0]
         try:
-            subj = Subject.objects.get(id=subject_id)
+            subj = Subject.objects.get(name=subject_name)
         except Exception:
             pass
         posts = Post.objects.filter(subject=subj)
@@ -152,7 +153,7 @@ def like_post(request):
 
 
 def recommend(post):
-    return get_recommendations()[post.subject]
+    return get_recommendations().get(post.subject, 0)
 
 
 def get_subjects_dir():

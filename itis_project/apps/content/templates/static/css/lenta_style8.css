@@ -125,6 +125,7 @@ header .user a span {
 	margin-top: 7vw; 
 	margin-left: 35vw;
 	margin-right: 30vw;
+	text-align-last: center;
 	display: inline-block;
 	-webkit-appearance: none;
 	-moz-appearance:none;
@@ -181,7 +182,7 @@ header .user a span {
 .articles .background .post .title {
 	font-size: 1.4vw;
 	letter-spacing: 0.1vw;
-	font-family: Intro;
+	font-family: Tahoma;
 	font-weight: 600;
 	padding-left: 1vw;
 	padding-right: 1vw;
@@ -252,9 +253,19 @@ header .user a span {
 	text-decoration: none;
 }
 
+#this_page {
+	background-color: #DB0D3B;
+}
+
+#subject {
+	font-style: italic;
+}
+
 footer {
 	width: 100%;
 	background-color: white;
+	position: relative;
+	bottom: 0;
 }
 
 footer p {

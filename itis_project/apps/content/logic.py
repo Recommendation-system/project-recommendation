@@ -4,7 +4,7 @@ import math
 similarity = dict()
 
 
-def get_user_rates(course=1, count=5):
+def get_user_rates(course=1, count=20):
     info = dict()
     for profile in UserProfile.objects.filter(course_number=course):
         if count == 0:
@@ -13,9 +13,10 @@ def get_user_rates(course=1, count=5):
         user = profile.user
         info[user] = dict()
         for subject in Subject.objects.filter(course_number=course):
-            info[user][subject] = profile.user.like_set.filter(post__subject__course_number=1,
+            info[user][subject] = profile.user.like_set.filter(post__subject__course_number=course,
                                                                post__subject=subject).count()
             count -= 1
+    print(info)
     return info
 
 

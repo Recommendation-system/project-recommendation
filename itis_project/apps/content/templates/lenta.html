@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>ITIS study – Лента</title>
-	<link rel="stylesheet" href="{% static 'css/lenta_style3.css' %}">
+	<link rel="stylesheet" href="{% static 'css/lenta_style8.css' %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -24,9 +24,9 @@
                 <option value="?page=1&subject=recommend">Рекомендации</option>
                 {% for subj in subjects %}
                     {% if subj == subject_selected %}
-                        <option selected value="?page=1&subject={{ subj.id }}" >{{ subj }}</option>
+                        <option selected value="?page=1&subject={{ subj }}" >{{ subj }}</option>
                     {% else %}
-                        <option value="?page=1&subject={{ subj.id }}" >{{ subj }}</option>
+                        <option value="?page=1&subject={{ subj }}" >{{ subj }}</option>
                     {% endif %}
                 {% endfor %}
 			</select>
@@ -39,6 +39,7 @@
                             <p>{{ post.title }}</p>
                         </div>
                         <div class="content">
+                            <p id="subject">Предмет: {{ post.subject }}</p>
                             <p>{{ post.content }}</p>
                         </div>
                         <div class="read-more">
@@ -66,15 +67,15 @@
             {% endfor %}
 		</div>
 		<div class="pages">
-			<a href="{{ previous_url }}&subject={{ subject_selected.id }}">&laquo;</a>
+			<a href="{{ previous_url }}&subject={{ subject_selected }}">&laquo;</a>
             {% for number in paginator_object.paginator.page_range %}
                 {% if paginator_object.number == number %}
-                   <a href="?page={{ number }}&subject={{ subject_selected.id }}">{{ number }}</a>
+                   <a id="this_page" href="?page={{ number }}&subject={{ subject_selected }}">{{ number }}</a>
                 {% elif number > paginator_object.number|add:-2 and number < paginator_object.number|add:2 %}
-                    <a href="?page={{ number }}&subject={{ subject_selected.id }}">{{ number }}</a>
+                    <a href="?page={{ number }}&subject={{ subject_selected }}">{{ number }}</a>
                 {% endif %}
             {% endfor %}
-            <a href="{{ next_url }}&subject={{ subject_selected.id }}">&raquo;</a>
+            <a href="{{ next_url }}&subject={{ subject_selected }}">&raquo;</a>
 		</div>
     </div>
 	<footer>
